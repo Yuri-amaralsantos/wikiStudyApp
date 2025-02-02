@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Playfair Display", serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+h1 {
+  color: #184e62;
+  font-weight: bolder;
+}
+p {
+  color: black;
+  font-size: 18px;
+  font-family: "Crimson Text", serif;
+}
+
+/* preenche a tela */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #184e62;
+  padding: 15px;
+  text-align: center;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  color: white;
+  font-size: 24px;
+  flex: 1;
+  text-align: left;
+}
+
+.header nav {
+  display: flex;
+  gap: 15px;
+}
+
+.header nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}
+
+/* responsividaded */
+.content {
+  flex: 1;
+  padding: 20px;
+  width: 100%;
+}
+
+.footer {
+  background-color: #184e62;
+  padding: 10px;
+  text-align: center;
+
+  font-size: 14px;
+  width: 100%;
+}
+
+.footer p {
+  font-size: 14px;
+  color: white;
+  font-family: "Crimson Text", serif;
+}
+.footer a {
+  font-size: 14px;
+}
+
+a {
+  font-size: 18px;
+  text-decoration: none;
+  color: rgb(29, 93, 231);
+  font-family: "Crimson Text", serif;
+}
+
+/* caixas de texto */
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  font-family: "Playfair Display", serif;
+  border: 1px solid gray;
+}
+
+.textarea {
+  height: 150px;
+}
+
+.button {
+  background-color: #1d7530;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+}
+
+.button:hover {
+  background-color: #20b13f;
+}
+
+.button.secondary {
+  background-color: #bd1307;
+}
+
+.button.secondary:hover {
+  background-color: #df190b;
+}
+
+.page-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4rem;
+  row-gap: 1rem; /* Space between items */
+  padding: 0;
+  list-style: none;
+  justify-content: flex-start; /* Ensures proper spacing */
+}
+
+.page-item {
+  width: 30%; /* Each item takes 30% of the screen */
+  min-width: 250px; /* Prevents items from being too small */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-item a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+}
+
+.page-item a:hover {
+  text-decoration: underline;
+}
+
+.delete-button {
+  background: none;
+  color: red;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.obs {
+  font-size: 14px;
+  color: black;
+  margin-top: 2rem;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .page-item {
+    width: 48%; /* Two columns instead of three */
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-item {
+    width: 100%; /* Full width for small screens */
+  }
+}
