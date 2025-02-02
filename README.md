@@ -22,6 +22,7 @@ Links entre Anotações
 Use @nomedaanotação@ no texto para criar um link direto para outra anotação existente.
 
 🚀 Como rodar o projeto?
+1️⃣ Clonar o repositório
 git clone https://github.com/seu-usuario/seu-repositorio.git
 cd seu-repositorio
 
