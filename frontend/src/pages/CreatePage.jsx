@@ -5,7 +5,7 @@ import "../styles/styles.css";
 export default function CreatePage() {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [error, setError] = useState(""); // State for error message
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSave = () => {
@@ -16,7 +16,6 @@ export default function CreatePage() {
 
     const storedPages = JSON.parse(localStorage.getItem("pages")) || [];
 
-    // Check if a page with the same title already exists
     if (
       storedPages.some(
         (page) => page.title.toLowerCase() === title.toLowerCase()
@@ -37,14 +36,14 @@ export default function CreatePage() {
     <div className="container">
       <h1>Nova anotação</h1>
       {error && <p className="error-message">{error}</p>}{" "}
-      {/* Show error if exists */}
+      {/* mensagem de erro */}
       <input
         type="text"
         placeholder="Título"
         value={title}
         onChange={(e) => {
           setTitle(e.target.value);
-          setError(""); // Clear error when user types
+          setError("");
         }}
         className="input"
       />
@@ -54,7 +53,7 @@ export default function CreatePage() {
         value={text}
         onChange={(e) => {
           setText(e.target.value);
-          setError(""); // Clear error when user types
+          setError("");
         }}
         className="textarea"
       />

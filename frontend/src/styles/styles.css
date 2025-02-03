@@ -144,15 +144,15 @@ a {
   display: flex;
   flex-wrap: wrap;
   column-gap: 4rem;
-  row-gap: 1rem; /* Space between items */
+  row-gap: 1rem;
   padding: 0;
   list-style: none;
-  justify-content: flex-start; /* Ensures proper spacing */
+  justify-content: flex-start;
 }
 
 .page-item {
-  width: 30%; /* Each item takes 30% of the screen */
-  min-width: 250px; /* Prevents items from being too small */
+  width: 30%;
+  min-width: 250px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -217,7 +217,7 @@ a {
   }
 
   .page-item {
-    width: 48%; /* Two columns instead of three */
+    width: 48%;
   }
 
   .button {
@@ -228,6 +228,6 @@ a {
 
 @media (max-width: 480px) {
   .page-item {
-    width: 100%; /* Full width for small screens */
+    width: 100%;
   }
 }

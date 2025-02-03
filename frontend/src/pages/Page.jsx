@@ -36,7 +36,7 @@ export default function Page() {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
-    setEditedContent(content); // Reset content to original value
+    setEditedContent(content);
   };
 
   const renderTextWithLinks = (text) => {
