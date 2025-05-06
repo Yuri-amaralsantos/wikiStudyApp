@@ -10,7 +10,7 @@ Um aplicativo web de anotações que permite criar fichas de estudo de forma sim
 ✅ Armazenamento local via LocalStorage (os dados permanecem salvos mesmo após fechar o navegador)
 
 📸 Demonstração
-🔗 Acesse o projeto online (se estiver hospedado em algum lugar, adicione o link aqui)
+https://wiki-study-app-polo.vercel.app
 
 Tela Inicial
 Exibe uma lista de anotações criadas, permitindo busca, edição e exclusão.
@@ -23,7 +23,7 @@ Use @nomedaanotação@ no texto para criar um link direto para outra anotação 
 
 🚀 Como rodar o projeto?
 1️⃣ Clonar o repositório
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/Yuri-amaralsantos/wikiStudyApp.git
 cd seu-repositorio
 
 2️⃣ Instalar as dependências
