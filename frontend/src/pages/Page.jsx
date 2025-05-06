@@ -1,64 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { getNote, getAllNotes, updateNote } from "../features/notes";
 import "../styles/styles.css";
 
 export default function Page() {
   const { title } = useParams();
-  const navigate = useNavigate();
+  const nav = useNavigate();
 
   const [content, setContent] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState("");
-  const [existingPages, setExistingPages] = useState([]);
+  const [edited, setEdited] = useState("");
+  const [allTitles, setAllTitles] = useState([]);
 
   useEffect(() => {
-    const storedPages = JSON.parse(localStorage.getItem("pages")) || [];
-    setExistingPages(storedPages.map((page) => page.title));
+    async function loadNote() {
+      const found = await getNote(title);
+      if (found) {
+        setContent(found.content);
+        setEdited(found.content);
+      }
 
-    const foundPage = storedPages.find((page) => page.title === title);
-    if (foundPage) {
-      setContent(foundPage.content);
-      setEditedContent(foundPage.content);
+      const notes = await getAllNotes();
+      setAllTitles(Array.isArray(notes) ? notes.map((n) => n.title) : []);
     }
+
+    loadNote();
   }, [title]);
 
-  const handleSave = () => {
-    setContent(editedContent);
+  const save = () => {
+    updateNote(title, edited);
+    setContent(edited);
     setIsEditing(false);
-
-    const storedPages = JSON.parse(localStorage.getItem("pages")) || [];
-    const updatedPages = storedPages.map((page) =>
-      page.title === title ? { ...page, content: editedContent } : page
-    );
-
-    localStorage.setItem("pages", JSON.stringify(updatedPages));
   };
 
-  const handleCancelEdit = () => {
-    setIsEditing(false);
-    setEditedContent(content);
-  };
-
-  const renderTextWithLinks = (text) => {
-    return text.split(/(@[^@]+@)/g).map((part, index) => {
-      if (part.startsWith("@") && part.endsWith("@")) {
-        const word = part.slice(1, -1);
-
-        if (existingPages.includes(word)) {
+  const renderWithLinks = (txt) =>
+    txt.split(/(@[^@]+@)/g).map((p, i) => {
+      if (p.startsWith("@") && p.endsWith("@")) {
+        const w = p.slice(1, -1);
+        if (allTitles.includes(w))
           return (
             <Link
-              key={index}
-              to={`/pagina/${encodeURIComponent(word)}`}
+              key={i}
+              to={`/pagina/${encodeURIComponent(w)}`}
               className="link"
             >
-              {word}
+              {w}
             </Link>
           );
-        }
       }
-      return part;
+      return p;
     });
-  };
 
   return (
     <div className="container">
@@ -67,10 +58,16 @@ export default function Page() {
         <div className="page-buttons">
           {isEditing ? (
             <>
-              <button onClick={handleSave} className="button">
+              <button onClick={save} className="button">
                 Salvar
               </button>
-              <button onClick={handleCancelEdit} className="button secondary">
+              <button
+                onClick={() => {
+                  setIsEditing(false);
+                  setEdited(content);
+                }}
+                className="button secondary"
+              >
                 Cancelar
               </button>
             </>
@@ -80,7 +77,7 @@ export default function Page() {
             </button>
           )}
           {!isEditing && (
-            <button onClick={() => navigate("/")} className="button secondary">
+            <button onClick={() => nav("/")} className="button secondary">
               Voltar
             </button>
           )}
@@ -90,19 +87,12 @@ export default function Page() {
       {isEditing ? (
         <textarea
           rows="5"
-          value={editedContent}
-          onChange={(e) => setEditedContent(e.target.value)}
+          value={edited}
+          onChange={(e) => setEdited(e.target.value)}
           className="textarea"
         />
       ) : (
-        <p>{renderTextWithLinks(content)}</p>
-      )}
-
-      {isEditing && (
-        <p className="obs">
-          <strong>Obs:</strong> Coloque as palavras entre arrobas ( @ ) para
-          adicionar uma referência a um título de outra anotação.
-        </p>
+        <p>{renderWithLinks(content)}</p>
       )}
     </div>
   );
