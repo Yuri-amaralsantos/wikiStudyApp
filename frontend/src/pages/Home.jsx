@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAllNotes, deleteNote, NoteList } from "../features/notes";
-import "../styles/styles.css";
+import { useEffect, useState } from "react";
+import { getAllNotes, deleteNote } from "../features/notes/noteService";
+import { NoteList } from "../features/notes";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
   const [search, setSearch] = useState("");
-  const nav = useNavigate();
 
   useEffect(() => {
-    setNotes(getAllNotes());
+    async function fetchNotes() {
+      const allNotes = await getAllNotes();
+      setNotes(allNotes);
+    }
+    fetchNotes();
   }, []);
 
-  const handleDelete = (title) => {
-    deleteNote(title);
-    setNotes(getAllNotes());
+  const handleDelete = async (title) => {
+    await deleteNote(title);
+    const allNotes = await getAllNotes();
+    setNotes(allNotes);
   };
 
   return (
-    <div className="container">
+    <div className="content">
       <h1>Minhas Anotações</h1>
       <NoteList
         notes={notes}
