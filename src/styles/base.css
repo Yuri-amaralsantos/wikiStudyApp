@@ -18,6 +18,7 @@ html {
 h1 {
   color: #0f172a;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 p {
@@ -28,21 +29,14 @@ p {
 a {
   font-size: 18px;
   text-decoration: none;
-  color: #2563eb;
   font-family: "Crimson Text", serif;
-}
-
-input {
-  border-radius: 25px;
-  box-shadow: 0 5px 10px rgba(97, 97, 97, 0.438);
 }
 
 .container {
   max-width: 1000px; /* Reduz o tamanho */
   margin: 40px auto;
   padding: 20px;
-  background-color: rgb(93, 193, 243); /* Fundo vermelho */
+  background-color: #aac2ce; /* Fundo vermelho */
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(117, 117, 117, 0.521);
-  color: rgb(0, 0, 0); /* Para o texto ficar visível no fundo vermelho */
 }

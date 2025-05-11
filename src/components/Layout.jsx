@@ -10,8 +10,8 @@ export default function Layout({ children, search, setSearch }) {
         <h1>LearnNotes</h1>
         <nav>
           <Link to="/">Início</Link>
-          <Link to="/">Sobre</Link>
-          <Link to="/">Contato</Link>
+          <Link to="/sobre">Sobre</Link>
+          <Link to="/contato">Contato</Link>
           <Link to="/nova">Nova Anotação</Link>
         </nav>
       </header>

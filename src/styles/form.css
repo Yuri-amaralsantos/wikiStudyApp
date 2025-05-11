@@ -2,9 +2,9 @@
 .textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #cbd5e1;
   font-family: "Playfair Display", serif;
   background-color: white;
+  border: none;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 

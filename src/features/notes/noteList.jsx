@@ -13,7 +13,8 @@ export default function NoteList({ notes, onDelete, search, setSearch }) {
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Filtrar anotações"
+        placeholder="Buscar anotação"
+        className="input"
         style={{ marginBottom: "16px", padding: "8px", width: "100%" }}
       />
       {filtered.length === 0 ? (

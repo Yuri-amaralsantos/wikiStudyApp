@@ -23,6 +23,7 @@ export default function Home() {
 
   return (
     <div className="container">
+      <h1>Minhas anotações</h1>
       <NoteList
         notes={notes}
         onDelete={handleDelete}

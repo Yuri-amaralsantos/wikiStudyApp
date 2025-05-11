@@ -95,7 +95,7 @@ export default function Page() {
                   setIsEditing(false);
                   setEdited(content);
                 }}
-                className="button secondary"
+                className="button"
               >
                 Cancelar
               </button>
@@ -106,7 +106,7 @@ export default function Page() {
             </button>
           )}
           {!isEditing && (
-            <button onClick={handleDelete} className="button danger">
+            <button onClick={handleDelete} className="button secondary">
               Excluir
             </button>
           )}
