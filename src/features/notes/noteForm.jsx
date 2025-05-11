@@ -10,8 +10,9 @@ export default function NoteForm({
   error,
 }) {
   return (
-    <div>
+    <div className="form">
       {error && <p className="error-message">{error}</p>}
+      <h1>Nova anotação</h1>
       <input
         type="text"
         placeholder="Título"

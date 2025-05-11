@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllNotes, deleteNote } from "../features/notes/noteService";
 import { NoteList } from "../features/notes";
+import Layout from "../components/Layout";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
@@ -21,8 +22,7 @@ export default function Home() {
   };
 
   return (
-    <div className="content">
-      <h1>Minhas Anotações</h1>
+    <div className="container">
       <NoteList
         notes={notes}
         onDelete={handleDelete}

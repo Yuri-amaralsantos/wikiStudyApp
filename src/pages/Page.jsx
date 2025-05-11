@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { getNote, getAllNotes, updateNote } from "../features/notes";
+import {
+  getNote,
+  getAllNotes,
+  updateNote,
+  deleteNote,
+} from "../features/notes";
+
 import "../styles/styles.css";
 
 export default function Page() {
@@ -11,6 +17,7 @@ export default function Page() {
   const [isEditing, setIsEditing] = useState(false);
   const [edited, setEdited] = useState("");
   const [allTitles, setAllTitles] = useState([]);
+  const [editedTitle, setEditedTitle] = useState(title);
 
   useEffect(() => {
     async function loadNote() {
@@ -18,6 +25,7 @@ export default function Page() {
       if (found) {
         setContent(found.content);
         setEdited(found.content);
+        setEditedTitle(title);
       }
 
       const notes = await getAllNotes();
@@ -27,10 +35,22 @@ export default function Page() {
     loadNote();
   }, [title]);
 
-  const save = () => {
-    updateNote(title, edited);
+  const handleDelete = async () => {
+    const confirm = window.confirm("Tem certeza que deseja excluir esta nota?");
+    if (confirm) {
+      await deleteNote(title);
+      nav("/");
+    }
+  };
+
+  const save = async () => {
+    if (editedTitle !== title) {
+      await deleteNote(title);
+    }
+    await updateNote(editedTitle, edited);
     setContent(edited);
     setIsEditing(false);
+    nav(`/pagina/${encodeURIComponent(editedTitle)}`);
   };
 
   const renderWithLinks = (txt) =>
@@ -54,7 +74,16 @@ export default function Page() {
   return (
     <div className="container">
       <div className="page-header">
-        <h1>{title}</h1>
+        {isEditing ? (
+          <input
+            type="text"
+            value={editedTitle}
+            onChange={(e) => setEditedTitle(e.target.value)}
+            className="input title-input"
+          />
+        ) : (
+          <h1>{title}</h1>
+        )}
         <div className="page-buttons">
           {isEditing ? (
             <>
@@ -77,8 +106,8 @@ export default function Page() {
             </button>
           )}
           {!isEditing && (
-            <button onClick={() => nav("/")} className="button secondary">
-              Voltar
+            <button onClick={handleDelete} className="button danger">
+              Excluir
             </button>
           )}
         </div>

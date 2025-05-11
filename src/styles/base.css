@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Playfair Display", serif;
+  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+  min-height: 100%;
+  color: #1e293b;
+}
+
+h1 {
+  color: #0f172a;
+  font-weight: bold;
+}
+
+p {
+  font-size: 18px;
+  font-family: "Crimson Text", serif;
+}
+
+a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #2563eb;
+  font-family: "Crimson Text", serif;
+}
+
+input {
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(97, 97, 97, 0.438);
+}
+
+.container {
+  max-width: 1000px; /* Reduz o tamanho */
+  margin: 40px auto;
+  padding: 20px;
+  background-color: rgb(93, 193, 243); /* Fundo vermelho */
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(117, 117, 117, 0.521);
+  color: rgb(0, 0, 0); /* Para o texto ficar visível no fundo vermelho */
+}

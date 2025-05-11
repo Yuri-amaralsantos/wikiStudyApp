@@ -32,12 +32,9 @@ export async function saveNote(note) {
 
 export async function updateNote(title, content) {
     const db = await getDb();
-    const note = await db.get(STORE_NAME, title);
-    if (note) {
-        note.content = content;
-        await db.put(STORE_NAME, note);
-    }
+    await db.put(STORE_NAME, { title, content });
 }
+
 
 export async function deleteNote(title) {
     const db = await getDb();

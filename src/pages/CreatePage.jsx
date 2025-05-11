@@ -25,7 +25,6 @@ export default function CreatePage() {
 
   return (
     <div className="container">
-      <h1>Nova anotação</h1>
       <NoteForm
         title={title}
         setTitle={(val) => {
@@ -40,9 +39,6 @@ export default function CreatePage() {
         onSave={handleSave}
         error={error}
       />
-      <button onClick={() => nav("/")} className="button secondary">
-        Voltar
-      </button>
     </div>
   );
 }

@@ -1,0 +1,25 @@
+.button {
+  background: linear-gradient(90deg, #059669, #10b981);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, transform 0.1s;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #047857, #059669);
+  transform: scale(1.02);
+}
+
+.secondary {
+  background: linear-gradient(90deg, #b91c1c, #ef4444);
+}
+
+.secondary:hover {
+  background: linear-gradient(90deg, #7f1d1d, #dc2626);
+}

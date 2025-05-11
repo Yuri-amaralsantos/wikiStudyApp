@@ -11,10 +11,10 @@ export default function NoteList({ notes, onDelete, search, setSearch }) {
     <div>
       <input
         type="text"
-        placeholder="Buscar página..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="input"
+        placeholder="Filtrar anotações"
+        style={{ marginBottom: "16px", padding: "8px", width: "100%" }}
       />
       {filtered.length === 0 ? (
         <p>Nenhuma anotação encontrada.</p>
@@ -25,12 +25,6 @@ export default function NoteList({ notes, onDelete, search, setSearch }) {
               <Link to={`/pagina/${encodeURIComponent(n.title)}`}>
                 {n.title}
               </Link>
-              <button
-                onClick={() => onDelete(n.title)}
-                className="delete-button"
-              >
-                ✖
-              </button>
             </li>
           ))}
         </ul>

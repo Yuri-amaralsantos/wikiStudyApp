@@ -1,0 +1,29 @@
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header h1 {
+    margin-bottom: 10px;
+  }
+
+  .header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .page-item {
+    width: 48%;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-item {
+    width: 100%;
+  }
+}
